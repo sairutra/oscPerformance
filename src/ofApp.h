@@ -2,12 +2,17 @@
 
 #include "ofMain.h"
 #include "ofxOsc.h"
+#include <ostream>
 
 // listening port
 #define PORT 12345
 
 // max number of strings to display
 #define NUM_MSG_STRINGS 20
+
+// window specs
+#define WIDTH 640
+#define HEIGTH 480
 
 // demonstrates receiving and processing OSC messages with an ofxOscReceiver,
 // use in conjunction with the oscSenderExample
@@ -34,6 +39,7 @@ class ofApp : public ofBaseApp{
 		ofxOscReceiver receiver;
 
 		int currentMsgString;
+		int colorInt = 10;
 		string msgStrings[NUM_MSG_STRINGS];
 		float timers[NUM_MSG_STRINGS];
 
