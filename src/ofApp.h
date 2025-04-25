@@ -39,7 +39,7 @@ class ofApp : public ofBaseApp{
 		ofxOscReceiver receiver;
 
 		int currentMsgString;
-		int colorInt = 10;
+		float oscValue = 0;
 		string msgStrings[NUM_MSG_STRINGS];
 		float timers[NUM_MSG_STRINGS];
 

@@ -24,19 +24,26 @@ void ofApp::update(){
 		// check for mouse moved message
 		if(m.getAddress() == "/vsynth")
 		{
-			colorInt += 10;
-			ofLog() << colorInt;
+			// if (m.getArgType() == OFXOSC_TYPE_FLOAT)
+			// 	ofLog() << "received float";
+			// else if (m.getArgType() == OFXOSC_TYPE_INT32)
+			// 	ofLog() << "received int";
 			ofLog() << "received message";
-			// for(size_t i = 0; i < m.getNumArgs(); i++)
-			// {
-			// 	// display the argument - make sure we get the right type
-			// 	if(m.getArgType(i) == OFXOSC_TYPE_INT32){
-			// 		ofLog() << "received value(int): " << ofToString(m.getArgAsInt32(i)) << std::endl;
-			// 	}
-			// 	else if(m.getArgType(i) == OFXOSC_TYPE_FLOAT){
-			// 		ofLog() << "received value(int): " << ofToString(m.getArgAsFloat(i)) << std::endl;
-			// 	}
-			// }
+			for(size_t i = 0; i < m.getNumArgs(); i++)
+			{
+				// display the argument - make sure we get the right type
+				if(m.getArgType(i) == OFXOSC_TYPE_INT32){
+					ofLog() << "received int";
+					// ofLog() << "received value(int): " << ofToString(m.getArgAsInt32(i)) << std::endl;
+				}
+				else if(m.getArgType(i) == OFXOSC_TYPE_FLOAT){
+					oscValue = m.getArgAsFloat(i);
+					ofLog() << "received value(float): " << oscValue;
+				}
+				else {
+					ofLog() << "received something";
+				}
+			}
 		}
 
 
@@ -64,10 +71,10 @@ void ofApp::draw(){
 	}
 	
 	ofColor color;
-
-	color.setHsb(colorInt,colorInt / 2, colorInt / 3);
+	float output = ofMap(oscValue, 0, 1, 0, 255);
+	color.setHsb(0,0,output);
 	ofSetColor(color);
-	ofDrawCircle(WIDTH/2, HEIGTH/2, colorInt / 2);
+	ofDrawCircle(WIDTH/2, HEIGTH/2, 10);
 }
 
 //--------------------------------------------------------------
