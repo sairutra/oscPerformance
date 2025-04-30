@@ -40,6 +40,9 @@ class ofApp : public ofBaseApp{
 
 		int currentMsgString;
 		float oscValue = 0;
+		float xPosition = 0;
+		float yPosition = 0;
+		
 		string msgStrings[NUM_MSG_STRINGS];
 		float timers[NUM_MSG_STRINGS];
 

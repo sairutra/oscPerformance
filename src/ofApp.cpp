@@ -74,7 +74,10 @@ void ofApp::draw(){
 	float output = ofMap(oscValue, 0, 1, 0, 255);
 	color.setHsb(0,0,output);
 	ofSetColor(color);
-	ofDrawCircle(WIDTH/2, HEIGTH/2, 10);
+	ofDrawCircle(xPosition, HEIGTH/2, 10);
+	xPosition += 1;
+	if (xPosition > WIDTH)
+		xPosition = 0;
 }
 
 //--------------------------------------------------------------
