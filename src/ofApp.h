@@ -39,7 +39,7 @@ class ofApp : public ofBaseApp{
 		ofxOscReceiver receiver;
 
 		int currentMsgString;
-		float oscValue = 0;
+		float oscValue = 100;
 		float xPosition = 0;
 		float yPosition = 0;
 		
