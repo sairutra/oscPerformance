@@ -10,19 +10,21 @@ void ofApp::setup()
 	ofLog() << "listening for osc messages on port " << PORT;
 	ofLog() << ofGetFrameRate();
 	receiver.setup(PORT);
+    sender.setup("127.0.0.1", 57120);
+    message.setAddress("/getamp");
 }
 
 //--------------------------------------------------------------
 void ofApp::update()
 {
-
+    sender.sendMessage(message, true);
 	while(receiver.hasWaitingMessages())
 	{
 		ofxOscMessage m;
 		receiver.getNextMessage(m);
 		std::string address = m.getAddress();
 
-		if(address == "/vsynth")
+		if(address == "/amp1")
 		{
 			ofLog() << "received message";
 			for(size_t i = 0; i < m.getNumArgs(); i++)

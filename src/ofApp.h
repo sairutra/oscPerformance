@@ -37,6 +37,8 @@ class ofApp : public ofBaseApp{
 
 		ofTrueTypeFont font;
 		ofxOscReceiver receiver;
+		ofxOscSender sender;
+		ofxOscMessage message;
 
 		int currentMsgString;
 		float oscValue = 100;
